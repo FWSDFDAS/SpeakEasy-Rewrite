@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import asrRouter from './routes/asr.js'
+import chatRouter from './routes/chat.js'
 
 const app = express()
 const PORT = parseInt(process.env.PORT || '3001', 10)
@@ -12,6 +13,7 @@ app.use(express.json())
 
 // 注册路由
 app.use('/api', asrRouter)
+app.use('/api', chatRouter)
 
 // 健康检查
 app.get('/health', (_req, res) => {
