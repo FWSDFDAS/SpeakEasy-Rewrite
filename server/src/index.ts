@@ -4,18 +4,20 @@ import cors from 'cors'
 import asrRouter from './routes/asr.js'
 import chatRouter from './routes/chat.js'
 import ttsRouter from './routes/tts.js'
+import tencentAsrRouter from './routes/tencentAsr.js'
 
 const app = express()
-const PORT = parseInt(process.env.PORT || '3001', 10)
+const PORT = parseInt(process.env.PORT || '3002', 10)
 
 // 中间件配置
 app.use(cors())
 app.use(express.json())
 
 // 注册路由
-app.use('/api', asrRouter)
-app.use('/api', chatRouter)
-app.use('/api', ttsRouter)
+app.use('/api', asrRouter)           // 七牛云 ASR（备用）
+app.use('/api', chatRouter)          // AI 对话
+app.use('/api', ttsRouter)           // TTS 语音合成
+app.use('/api', tencentAsrRouter)    // 腾讯云 ASR（新）
 
 // 健康检查
 app.get('/health', (_req, res) => {

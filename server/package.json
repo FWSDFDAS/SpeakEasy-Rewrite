@@ -12,7 +12,8 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
-        "formidable": "^3.5.4"
+        "formidable": "^3.5.4",
+        "tencentcloud-sdk-nodejs": "^4.1.244"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",
