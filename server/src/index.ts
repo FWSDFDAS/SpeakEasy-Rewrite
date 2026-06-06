@@ -2,11 +2,8 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import asrRouter from './routes/asr.js'
-<<<<<<< HEAD
 import chatRouter from './routes/chat.js'
-=======
 import ttsRouter from './routes/tts.js'
->>>>>>> main
 
 const app = express()
 const PORT = parseInt(process.env.PORT || '3001', 10)
@@ -17,11 +14,8 @@ app.use(express.json())
 
 // 注册路由
 app.use('/api', asrRouter)
-<<<<<<< HEAD
 app.use('/api', chatRouter)
-=======
 app.use('/api', ttsRouter)
->>>>>>> main
 
 // 健康检查
 app.get('/health', (_req, res) => {
@@ -32,5 +26,6 @@ app.get('/health', (_req, res) => {
 app.listen(PORT, () => {
     console.log(`[Server] SpeakEasy 服务已启动：http://localhost:${PORT}`)
     console.log(`[Server] ASR 模拟模式：${process.env.USE_MOCK_ASR === 'true' ? '开启' : '关闭'}`)
+    console.log(`[Server] Chat 模拟模式：${process.env.USE_MOCK_CHAT === 'true' ? '开启' : '关闭'}`)
     console.log(`[Server] TTS 模拟模式：${process.env.USE_MOCK_TTS === 'true' ? '开启' : '关闭'}`)
 })
