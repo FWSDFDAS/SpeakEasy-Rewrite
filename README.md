@@ -6,7 +6,8 @@
 
 ## 演示视频
 
-[![观看演示视频](https://pan.baidu.com/s/1dLXsHkx9cLjUVlWRVbcwTg?pwd=356r，用百度网盘打开)
+## 演示视频
+[点击观看完整演示](https://b23.tv/qR3LxAB)
 
 ---
 
