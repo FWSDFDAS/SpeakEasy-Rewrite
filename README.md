@@ -6,9 +6,7 @@
 
 ## 演示视频
 
-[![观看演示视频](https://img.youtube.com/vi/VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID_HERE)
-
-> 视频链接待补充 — 将 `VIDEO_ID_HERE` 替换为你的 YouTube 视频 ID
+[![观看演示视频](https://pan.baidu.com/s/1dLXsHkx9cLjUVlWRVbcwTg?pwd=356r，用百度网盘打开)
 
 ---
 
@@ -16,7 +14,7 @@
 
 | 功能 | 说明 |
 |------|------|
-| **双模式语音识别** | ☁️ 腾讯云 SentenceRecognition（高精度）/ 🎤 浏览器 Web Speech API（免费） |
+| **语音识别** | ☁️ 腾讯云 SentenceRecognition（高精度）） |
 | **DeepSeek 对话** | 人格化 AI 角色（Sarah/Mike/David），自然口语风格，带对话记忆 |
 | **三大场景** | 面试 / 点餐 / 会议，不同角色和对话风格 |
 | **智能纠错** | 每轮对话提供英语表达纠错建议（时态、用词、语法） |
