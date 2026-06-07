@@ -7,10 +7,10 @@ const router = Router()
 
 /**
  * POST /api/asr
- * 接收音频文件，调用七牛云 ASR 并返回识别结果
+ * 接收音频文件，调用 Whisper API 进行语音识别并返回识别结果
  *
  * 请求格式：multipart/form-data，字段名为 audio
- * 支持格式：webm（采样率 16kHz，单声道）
+ * 支持格式：webm、mp3、wav、m4a、ogg、flac
  */
 router.post('/asr', async (req, res) => {
     try {
@@ -37,15 +37,20 @@ router.post('/asr', async (req, res) => {
             return
         }
 
-        // 校验文件格式（仅允许 webm）
-        const mimeType = audioFile.mimetype || ''
-        if (!mimeType.includes('webm')) {
-            res.json({ success: false, error: '不支持的音频格式，请上传 webm 格式的音频文件' })
+        // 校验文件格式（Whisper 支持多种常见格式）
+        const allowedTypes = ['webm', 'mp3', 'wav', 'm4a', 'ogg', 'flac', 'mpeg']
+        const ext = (audioFile.originalFilename || '').split('.').pop()?.toLowerCase() || ''
+        if (!allowedTypes.includes(ext) && !allowedTypes.some(t => (audioFile.mimetype || '').includes(t))) {
+            res.json({
+                success: false,
+                error: `不支持的音频格式：${ext || audioFile.mimetype}。支持：webm、mp3、wav、m4a`,
+            })
             return
         }
 
         // 读取音频文件为 Buffer
         const audioBuffer = await fs.readFile(audioFile.filepath)
+        const filename = audioFile.originalFilename || 'audio.webm'
 
         // 判断是否使用模拟模式
         const useMock = process.env.USE_MOCK_ASR === 'true'
@@ -54,7 +59,7 @@ router.post('/asr', async (req, res) => {
         if (useMock) {
             result = mockRecognize()
         } else {
-            result = await recognizeAudio(audioBuffer)
+            result = await recognizeAudio(audioBuffer, filename)
         }
 
         res.json(result)
